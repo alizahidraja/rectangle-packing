@@ -13,23 +13,24 @@ green_d = st.text_input("Enter Dimension of Green Box Depth:", "17")
 amount = st.text_input("Enter Amount:", "2")
 
 if st.button('Pack Boxes!'):
-    material_box = [(int(red_w), int(red_h))]
-    box = [int(green_w), int(green_h), int(green_d)]
-    tot = int(amount)
-
-    material_box = [(int(red_w), int(red_h))]
-    box = [int(green_w), int(green_h), int(green_d)]
+    material_box = [(float(red_w), float(red_h))]
+    box = [float(green_w), float(green_h), float(green_d)]
     tot = int(amount)
 
     total_boxes = []
 
     for i in range(tot):
         total_boxes.append([box[0], box[1]])
-        total_boxes.append([box[0], box[2]])
         total_boxes.append([box[1], box[0]])
-        total_boxes.append([box[1], box[2]])
+
+
+        total_boxes.append([box[0], box[2]])
         total_boxes.append([box[2], box[0]])
-        total_boxes.append([box[2], box[1]])
+
+        total_boxes.append([box[1], box[2]])
+        
+        total_boxes.append([(box[2] + 4.5) / 2, box[1]])
+        total_boxes.append([(box[2] + 4.5) / 2, box[1]])
 
     dwg = svgwrite.Drawing('test.svg', profile='full')
 
@@ -80,7 +81,8 @@ if st.button('Pack Boxes!'):
     with open("test.svg", "rb") as f:
         bytes = f.read()
         b64 = base64.b64encode(bytes).decode()
-        href = f'<a href="data:file/svg;base64,{b64}">Download File</a> (right-click and save as &lt;image&gt;.svg)'
+        href = f'<a href="data:file/svg;base64,{b64}" download="image.svg">Download SVG file</a>'
+        
         st.markdown(href, unsafe_allow_html=True)
 
 
