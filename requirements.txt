@@ -2,4 +2,3 @@ streamlit
 matplotlib
 rectpack
 svgwrite
-base64
