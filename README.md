@@ -5,10 +5,15 @@ Given dimensions of a 2D box, and dimensions of a 3D box to be cut out of the ma
 
 ## Example:
 Red Box Width: 137
+
 Red Box Height: 300
+
 Green Box Width: 52
+
 Green Box Height: 110
+
 Green Box Depth: 17
+
 Amount: 2
 
 
